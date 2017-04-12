@@ -1,130 +1,90 @@
-# VADSLL
-Virtual ADSL tools for Linux
+#linux 虚拟adsl 的使用 
+
+##感谢 sceext222 的贡献
+
+  https://github.com/sceext222/vadsll.git 
 
 
-## Description
-(虚拟 ADSL)
+##开始正题 vadsll的安装使用
+  nftables libnetfilter_queue nodejs npm rust cargo git make
 
-(`zh_CN`) *中文安装说明* (TODO)
++ **1**,准备
+  nodejs --https://nodejs.org/en/
+  rustc --curl https://sh.rustup.rs -sSf | sh
 
++ **2**.安装需要的软件支持
+  ...
+    1).git  -- sudo apt install git
+    2).make --sudo apt install make
+    3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev
+  ...
 
-## Install
-(Under [`ArchLinux`](https://www.archlinux.org/))
++ **3**.获取vadsll 
+  ...
+    git clone https://github.com/sceext222/vadsll --single-branch --depth=1
+  ...
++ **4**.安装
++ **1)**.cd {user}/vadsll
++ **2)**.make init
++ **3)**.make build 
++ **4)**. cd systemd 
++ **5)**.修改vadsll.service
+...
+  gedit vadsll.service
+...
+  改成如下: 
+...
+  {
+    ExecStart={你的node物理路径} /usr/local/lib/vadsll/vadsll/vadsll.js --login
+    ExecStop={你的node物理路径} /usr/local/lib/vadsll/vadsll/vadsll.js --logout
+  }
+...
 
-+ **1**. Install some softwares
-  ```
-  $ sudo pacman -S --needed nftables libnetfilter_queue nodejs npm rust cargo git make
-  ```
++ **6)**.sudo make install 
 
-+ **2**. Download source code
-  ```
-  $ git clone https://github.com/sceext222/vadsll --single-branch --depth=1
-  ```
++ **7)**.改配置文件
 
-+ **3**. Build from source
-  ```
-  $ cd vadsll
-  $ make init
-  $ make build
-  ```
-
-+ **4**. Install
-  ```
-  $ sudo make install
-  ```
-
-+ **5**. Modify config file
-  ```
+...
   $ cd /usr/local/etc/vadsll
-  $ sudo cp config.toml.example config.toml
-  $ sudo vim config.toml
-  ```
+  $ cp config.json.sample config.json
+  $ sudo gedit config.json
 
+    {
+      "interface": "{你的网卡地址}",
+      "account": "{电信宽带帐号}",
+      "password": "{密码}",
 
-## Usage
+      "auth_server": "{你的认证服务器地址}:1812",
+      "ethernet_mtu": 1500,
+      "vadsl_mtu": 1476,
+      "keep_alive_timeout_s": 300,
 
-+ Login
-  ```
+      "nfqueue_id": 44001,
+      "nft_table": "vadsll",
+      "nft_hook_priority": 150,
+      "#": "config file for VADSLL"
+    }
+...
+
+##PS:
+
++ **1)**.此处的认证服务器地址获取方法如下两种：
+  + **a**.使用抓包程序，抓包分析
+  + **b**.虚拟adsl软件安装地址中有一个配置文件，其中有这个认证服务器地址
++ **2)**.网卡地址获取方式：
+...
+ip link
+...
+  一般e开头的是有限网卡，w开头的是无线网卡
+
++ **5**. Login
+
+  ...
   $ sudo systemctl start vadsll
-  ```
+  ...
 
-+ Logout
-  ```
++ **6**. Logout
+
+  ...
   $ sudo systemctl stop vadsll
-  ```
-
-```
-$ node /usr/local/lib/vadsll/vadsll/vadsll.js --help
-vadsll: Virtual ADSL tools for Linux
-Usage:
-    --login              The complete LOGIN process
-    --logout             The complete LOGOUT process
-
-    --only-login         Only send LOGIN packet to auth server
-    --only-logout        Only send LOGOUT packet to auth server
-    --nft-gen            Generate nftables rules
-    --nft-init           Setup nftables rules
-    --nft-reset          Reset nftables rules
-    --log-backup         Backup log files
-    --log-clean          Clean log files
-    --run-keep-alive     Run KEEP-ALIVE in background
-    --run-route-filter   Run route_filter in background
-    --route-filter       Daemon of route_filter
-    --keep-alive         Daemon of KEEP-ALIVE
-    --once-keep-alive    Only send KEEP-ALIVE packet to auth server ONCE
-    --kill-keep-alive    Kill KEEP-ALIVE daemon
-    --kill-route-filter  Kill route_filter daemon
-
-    --help               Show this help text
-    --version            Show version of this program
-
-vadsll: <https://github.com/sceext222/vadsll>
-$
-```
-
-
-## Dependencies
-
-Under `archlinux`:
-```
-$ sudo pacman -S --needed nftables libnetfilter_queue nodejs npm rust cargo
-```
-
-+ **`nftables`** <br />
-  <https://wiki.nftables.org/wiki-nftables/index.php/Main_Page>
-
-  ```
-  $ nft --version
-  nftables v0.7 (Scrooge McDuck)
-  $
-  ```
-
-+ **`libnetfilter_queue`** <br />
-  <https://www.netfilter.org/projects/libnetfilter_queue/index.html>
-
-  ```
-  $ pacman -Ss libnetfilter_queue
-  extra/libnetfilter_queue 1.0.2-2 [installed]
-      Userspace API to packets that have been queued by the kernel packet filter
-  $
-  ```
-
-Test `2017.04`
-```
-$ uname -a
-Linux SCEEXT-ARCH-LT-201603 4.10.6-1-zen #1 ZEN SMP PREEMPT Sun Mar 26 18:10:57 UTC 2017 x86_64 GNU/Linux
-$ node --version
-v7.7.3
-$ npm --version
-4.4.4
-$ rustc --version
-rustc 1.16.0 (30cf806ef 2017-03-10)
-$ cargo --version
-cargo-0.17.0-nightly (f9e5481 2017-03-03)
-$
-```
-
-
-## LICENSE
-
-`GNU GPLv3+`
+  ...
