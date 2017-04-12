@@ -20,7 +20,9 @@
   ```
    <p>1).git  -- sudo apt install git</p>
    <p>2).make --sudo apt install make  <br/>
-   <p>3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev</p>
+   <p>3).nftables libnetfilter-queue -- 
+
+	$ sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev</p>
   ```
 
 + **3**.获取vadsll 
@@ -31,10 +33,10 @@
   ```
 
 + **4**.安装
-+ **1)**.cd {user}/vadsll
-+ **2)**.make init
-+ **3)**.make build 
-+ **4)**. cd systemd 
++ **1)**. ```$ cd {user}/vadsll```
++ **2)**. ```$ make init```
++ **3)**. ```$ make build``` 
++ **4)**. ```$ cd systemd```
 + **5)**.修改vadsll.service
 ```
      gedit vadsll.service
@@ -47,7 +49,7 @@
   }
 ```
 
-+ **6)**.sudo make install 
++ **6)**.``` $ sudo make install ```
 
 + **7)**.改配置文件
 
