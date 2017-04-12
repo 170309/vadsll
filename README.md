@@ -1,34 +1,35 @@
 <h1>linux 虚拟adsl 的使用 </h1>
 
-<h2>感谢 sceext222 的贡献</h2>
-
   https://github.com/sceext222/vadsll.git 
 
 
 ## 开始正题 vadsll的安装使用 ##
 
 <pre>
-    nftables libnetfilter_queue nodejs npm rust cargo git make
+   <p> nftables libnetfilter_queue nodejs npm rust cargo git make</p>
 </pre>
 
 
 + **1**,准备
 <code>
-	> nodejs --https://nodejs.org/en/  <br/>
-  	> rustc --curl https://sh.rustup.rs -sSf | sh
+	<p>nodejs --https://nodejs.org/en/</p>
+  	<p>rustc --curl https://sh.rustup.rs -sSf | sh</p>
 </code>
 
 + **2**.安装需要的软件支持
   <code>
-   >  1).git  -- sudo apt install git  <br/>
-   >  2).make --sudo apt install make  <br/>
-   >  3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev
+   <p>1).git  -- sudo apt install git</p>
+   <p>2).make --sudo apt install make  <br/>
+   <p>3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev</p>
   </code>
 
 + **3**.获取vadsll 
   ...
+
     git clone https://github.com/sceext222/vadsll --single-branch --depth=1
+
   ...
+
 + **4**.安装
 + **1)**.cd {user}/vadsll
 + **2)**.make init
@@ -36,14 +37,18 @@
 + **4)**. cd systemd 
 + **5)**.修改vadsll.service
 ...
+
   gedit vadsll.service
+
 ...
   改成如下: 
 ...
+
   {
     ExecStart={你的node物理路径} /usr/local/lib/vadsll/vadsll/vadsll.js --login
     ExecStop={你的node物理路径} /usr/local/lib/vadsll/vadsll/vadsll.js --logout
   }
+
 ...
 
 + **6)**.sudo make install 
@@ -51,9 +56,14 @@
 + **7)**.改配置文件
 
 ...
+
   $ cd /usr/local/etc/vadsll
   $ cp config.json.sample config.json
   $ sudo gedit config.json
+
+...
+
+...
 
     {
       "interface": "{你的网卡地址}",
@@ -70,9 +80,10 @@
       "nft_hook_priority": 150,
       "#": "config file for VADSLL"
     }
+
 ...
 
-##PS:##
+## PS: ##
 
 + **1)**.此处的认证服务器地址获取方法如下两种：
   + **a**.使用抓包程序，抓包分析
