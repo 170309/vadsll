@@ -1,11 +1,11 @@
 #linux 虚拟adsl 的使用 
 
-##感谢 sceext222 的贡献
+##感谢 sceext222 的贡献##
 
   https://github.com/sceext222/vadsll.git 
 
 
-##开始正题 vadsll的安装使用
+##开始正题 vadsll的安装使用##
   nftables libnetfilter_queue nodejs npm rust cargo git make
 
 + **1**,准备
@@ -66,7 +66,7 @@
     }
 ...
 
-##PS:
+##PS:##
 
 + **1)**.此处的认证服务器地址获取方法如下两种：
   + **a**.使用抓包程序，抓包分析
@@ -85,6 +85,6 @@ ip link
 
 + **6**. Logout
 
-  ...
+  <code>
   $ sudo systemctl stop vadsll
-  ...
+  </code>
