@@ -27,24 +27,32 @@
 
 + **3**.获取vadsll 
   ```
-
-    git clone https://github.com/sceext222/vadsll --single-branch --depth=1
-
+    $ git clone https://github.com/sceext222/vadsll --single-branch --depth=1
   ```
 
 + **4**.安装
 + **1)**. 
-	```$ cd {user}/vadsll```
+	```
+	$ cd {user}/vadsll
+	```
 + **2)**. 
-	```$ make init```
+	```
+	$ make init
+	```
 + **3)**. 
-	```$ make build``` 
-+ **4)**. ```$ cd systemd```
+	```
+	$ make build
+	``` 
++ **4)**. ```
+	$ cd systemd
+	```
 + **5)**.修改vadsll.service
 ```
-     gedit vadsll.service
+     $ gedit vadsll.service
 ```
-  改成如下: 
+
+ ### 改成如下: ###
+
 ```
   {
     ExecStart={你的node物理路径} /usr/local/lib/vadsll/vadsll/vadsll.js --login
@@ -52,7 +60,10 @@
   }
 ```
 
-+ **6)**.``` $ sudo make install ```
++ **6)**.
+	```
+	 $ sudo make install 
+	```
 
 + **7)**.改配置文件
 
