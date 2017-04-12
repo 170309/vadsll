@@ -33,9 +33,12 @@
   ```
 
 + **4**.安装
-+ **1)**. ```$ cd {user}/vadsll```
-+ **2)**. ```$ make init```
-+ **3)**. ```$ make build``` 
++ **1)**. 
+	```$ cd {user}/vadsll```
++ **2)**. 
+	```$ make init```
++ **3)**. 
+	```$ make build``` 
 + **4)**. ```$ cd systemd```
 + **5)**.修改vadsll.service
 ```
