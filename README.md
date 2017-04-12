@@ -17,12 +17,13 @@
   	nodejs --https://nodejs.org/en/
   	rustc --curl https://sh.rustup.rs -sSf | sh
 </code>
+
 + **2**.安装需要的软件支持
-  ...
-    1).git  -- sudo apt install git
-    2).make --sudo apt install make
-    3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev
-  ...
+  <code>
+   >  1).git  -- sudo apt install git
+   >  2).make --sudo apt install make
+   >  3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev
+  </code>
 
 + **3**.获取vadsll 
   ...
