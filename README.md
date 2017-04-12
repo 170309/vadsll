@@ -8,20 +8,20 @@
 ## 开始正题 vadsll的安装使用 ##
 
 <pre>
-	 nftables libnetfilter_queue nodejs npm rust cargo git make
+    nftables libnetfilter_queue nodejs npm rust cargo git make
 </pre>
 
 
 + **1**,准备
 <code>
-  	nodejs --https://nodejs.org/en/
-  	rustc --curl https://sh.rustup.rs -sSf | sh
+	> nodejs --https://nodejs.org/en/  <br/>
+  	> rustc --curl https://sh.rustup.rs -sSf | sh
 </code>
 
 + **2**.安装需要的软件支持
   <code>
-   >  1).git  -- sudo apt install git
-   >  2).make --sudo apt install make
+   >  1).git  -- sudo apt install git  <br/>
+   >  2).make --sudo apt install make  <br/>
    >  3).nftables libnetfilter-queue -- sudo apt install nftables  libnetfilter-queue1 libnetfilter-queue-dev
   </code>
 
